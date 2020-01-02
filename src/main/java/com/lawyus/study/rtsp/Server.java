@@ -92,7 +92,7 @@ public class Server extends JFrame implements ActionListener {
 	//------------------------------------
 	//main
 	//------------------------------------
-	public static void main(String argv[]) throws Exception
+	public static void main(String[] argv) throws Exception
 	{
 		//create a Server object
 		Server theServer = new Server();
@@ -102,7 +102,7 @@ public class Server extends JFrame implements ActionListener {
 		theServer.setVisible(true);
 
 		//get RTSP socket port from the command line
-		int RTSPport = Integer.parseInt(argv[0]);
+		int RTSPport = Integer.parseInt("1554");
 
 		//Initiate TCP connection with the client for the RTSP session
 		ServerSocket listenSocket = new ServerSocket(RTSPport);

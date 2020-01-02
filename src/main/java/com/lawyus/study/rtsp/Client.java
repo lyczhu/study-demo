@@ -111,19 +111,19 @@ public class Client{
 	//------------------------------------
 	//main
 	//------------------------------------
-	public static void main(String argv[]) throws Exception
+	public static void main(String[] argv) throws Exception
 	{
 		//Create a Client object
 		Client theClient = new Client();
 
 		//get server RTSP port and IP address from the command line
 		//------------------
-		int RTSP_server_port = Integer.parseInt(argv[1]);
-		String ServerHost = argv[0];
-		InetAddress ServerIPAddr = InetAddress.getByName(ServerHost);
+		int RTSP_server_port = Integer.parseInt("1554");
+		String ServerPort = "DESKTOP-21MC6VA";
+		InetAddress ServerIPAddr = InetAddress.getByName(ServerPort);
 
 		//get video filename to request:
-		VideoFileName = argv[2];
+		VideoFileName = "movie.Mjpeg";
 
 		//Establish a TCP connection with the server to exchange RTSP messages
 		//------------------
