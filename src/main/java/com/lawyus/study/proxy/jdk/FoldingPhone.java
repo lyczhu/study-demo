@@ -10,6 +10,6 @@ package com.lawyus.study.proxy.jdk;
 public class FoldingPhone implements Phone {
 	@Override
 	public void call() {
-		System.out.println("make a telephone call by folding phone");
+		System.out.println("make a telephone call by folding phone!");
 	}
 }
