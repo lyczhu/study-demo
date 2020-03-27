@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
  * @date: 2019/12/17 16:12
  * @since: 1.0.0
  */
-@Repository
+//@Repository
 public interface TableADao extends BaseMapper<TableA> {
 }
