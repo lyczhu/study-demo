@@ -1,5 +1,8 @@
 package com.lawyus.study.postgres;
 
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import javax.sql.DataSource;
 import javax.sql.rowset.JdbcRowSet;
 import javax.sql.rowset.RowSetProvider;
 import java.sql.Connection;
@@ -41,5 +44,11 @@ public class PostgresConn {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void template() {
+        //new PGSimpleDataSource();
+        DataSource dataSource = null;
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
     }
 }
