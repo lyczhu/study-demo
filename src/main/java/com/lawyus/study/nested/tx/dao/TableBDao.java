@@ -6,9 +6,8 @@ import com.lawyus.study.nested.tx.entity.TableB;
 /**
  * TODO : Describe please!
  *
- * @author: lyc
- * @date: 2019/12/17 16:12
- * @since: 1.0.0
+ * @author lyc
+ * @since 2019/12/17 16:12
  */
 //@Repository
 public interface TableBDao extends BaseMapper<TableB> {

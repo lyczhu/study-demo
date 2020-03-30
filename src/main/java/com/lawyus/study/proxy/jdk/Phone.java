@@ -3,9 +3,8 @@ package com.lawyus.study.proxy.jdk;
 /**
  * TODO : Describe please!
  *
- * @author: lyc
- * @date: 2019/12/20 11:11
- * @since: 1.0.0
+ * @author lyc
+ * @since 2019/12/20 11:11
  */
 public interface Phone {
 

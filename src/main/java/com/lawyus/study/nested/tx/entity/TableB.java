@@ -7,9 +7,8 @@ import lombok.Data;
 /**
  * TODO : Describe please!
  *
- * @author: lyc
- * @date: 2019/12/17 15:43
- * @since: 1.0.0
+ * @author lyc
+ * @since 2019/12/17 15:43
  */
 @Data
 public class TableB {

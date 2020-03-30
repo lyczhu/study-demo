@@ -10,9 +10,8 @@ import java.lang.reflect.Proxy;
 /**
  * TODO : Describe please!
  *
- * @author: lyc
- * @date: 2019/12/20 16:25
- * @since: 1.0.0
+ * @author lyc
+ * @since 2019/12/20 16:25
  */
 public class SimpleProxyFactory {
 

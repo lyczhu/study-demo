@@ -3,9 +3,8 @@ package com.lawyus.study.thread;
 /**
  * TODO : Describe please!
  *
- * @author: lyc
- * @date: 2020/3/12 15:17
- * @since: 1.0.0
+ * @author lyc
+ * @since 2020/3/12 15:17
  */
 public class Visibility {
 

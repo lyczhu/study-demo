@@ -10,9 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * TODO : Describe please!
  *
- * @author: lyc
- * @date: 2019/12/17 18:11
- * @since: 1.0.0
+ * @author lyc
+ * @since 2019/12/17 18:11
  */
 @Service
 public class TransactionTwo {

@@ -22,9 +22,8 @@ import javax.sql.DataSource;
 /**
  * TODO : Describe please!
  *
- * @author: lyc
- * @date: 2019/12/17 16:05
- * @since: 1.0.0
+ * @author lyc
+ * @since 2019/12/17
  */
 @Configuration
 @MapperScan(basePackages = {"com.lawyus.study.nested.tx.dao"},

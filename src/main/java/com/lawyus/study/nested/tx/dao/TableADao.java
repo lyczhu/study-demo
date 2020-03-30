@@ -7,9 +7,8 @@ import org.springframework.stereotype.Repository;
 /**
  * TODO : Describe please!
  *
- * @author: lyc
- * @date: 2019/12/17 16:12
- * @since: 1.0.0
+ * @author lyc
+ * @since 2019/12/17 16:12
  */
 //@Repository
 public interface TableADao extends BaseMapper<TableA> {

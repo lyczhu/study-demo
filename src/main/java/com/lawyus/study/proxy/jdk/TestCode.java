@@ -8,9 +8,8 @@ import com.lawyus.study.proxy.jdk.factory.SmartPhoneFactory;
 /**
  * TODO : Describe please!
  *
- * @author: lyc
- * @date: 2019/12/20 16:52
- * @since: 1.0.0
+ * @author lyc
+ * @since 2019/12/20 16:52
  */
 public class TestCode {
 	public static void main(String[] args) {
