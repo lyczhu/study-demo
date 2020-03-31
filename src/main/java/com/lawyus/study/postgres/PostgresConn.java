@@ -1,5 +1,6 @@
 package com.lawyus.study.postgres;
 
+import org.postgresql.ds.PGSimpleDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
@@ -47,8 +48,18 @@ public class PostgresConn {
     }
 
     public void template() {
-        //new PGSimpleDataSource();
-        DataSource dataSource = null;
+        PGSimpleDataSource dataSource = new PGSimpleDataSource();
+        /*private String serverName = "localhost";
+        private String databaseName = "";
+        private String user;
+        private String password;
+        private int portNumber = 0;*/
+        dataSource.setServerName("localhost");
+        dataSource.setPortNumber(5432);
+        dataSource.setDatabaseName("postgres");
+        dataSource.setCurrentSchema("public");
+        dataSource.setUser("postgres");
+        dataSource.setPassword("chengke123");
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
     }
 }
