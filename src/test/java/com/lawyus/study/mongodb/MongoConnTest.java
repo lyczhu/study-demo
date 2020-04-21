@@ -32,21 +32,12 @@ public class MongoConnTest {
     private MongoConn mongoConn;
 
     @Test
-    public void test() {
-        mongoConn.test("localhost", 27017, "local");
+    public void testConn() {
+        mongoConn.testConn("localhost", 27017, "local");
     }
 
     @Test
-    public void testConn() {
-        String urlStr = "mongodb://127.0.0.1:27017";
-        ConnectionString cString = new ConnectionString(urlStr);
-        MongoClientSettings mcs = MongoClientSettings.builder().applyConnectionString(cString)
-                .applyToClusterSettings(c -> c.serverSelectionTimeout(5, TimeUnit.SECONDS))
-                .build();
-        MongoClient mongoClient = MongoClients.create(mcs);
-
-        MongoIterable<String> databaseNames = mongoClient.listDatabaseNames();
-        databaseNames.first();
+    public void save() {
+        mongoConn.save("localhost", 27017, "city", "car");
     }
-
 }
