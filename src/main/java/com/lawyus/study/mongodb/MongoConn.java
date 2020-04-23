@@ -3,11 +3,8 @@ package com.lawyus.study.mongodb;
 import com.mongodb.*;
 import com.mongodb.client.*;
 import com.mongodb.client.MongoClient;
-import com.mongodb.client.model.Filters;
-import com.mongodb.connection.ConnectionPoolSettings;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.Document;
-import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -47,22 +44,19 @@ public class MongoConn {
         }
     }
 
-    public void save(String host, int port, String database, String collection) {
+    public MongoClient getClient(String host, int port) {
         String urlStr = "mongodb://" + host + ":" + port;
         ConnectionString cString = new ConnectionString(urlStr);
         MongoClientSettings mcs = MongoClientSettings.builder().applyConnectionString(cString)
                 .applyToClusterSettings(c -> c.serverSelectionTimeout(5, TimeUnit.SECONDS))
-                .applyToConnectionPoolSettings(p -> {})
                 .build();
         try (MongoClient mongoClient = MongoClients.create(mcs)) {
-            MongoDatabase mongoDatabase = mongoClient.getDatabase(database);
-            MongoCollection<Document> col = mongoDatabase.getCollection(collection);
 
-            Document document = new Document().append("_id", new ObjectId("5e89efff210ec806e2844826")).append("name", "car1");
-            col.insertOne(document);
+            return mongoClient;
         } catch (MongoTimeoutException e) {
             log.info("MongoDB连接超时", e);
         }
+        return null;
     }
 
     public void testByTemplate(String host, int port, String database) {
