@@ -29,7 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-@Configuration
+//@Configuration
 public class BatchConfig {
 
     @Autowired

@@ -26,7 +26,7 @@ import javax.sql.DataSource;
  * @since 2019/12/17
  */
 @Configuration
-@MapperScan(basePackages = {"com.lawyus.study.nested.tx.dao"},
+@MapperScan(basePackages = {"com.lawyus.study.nested.tx.dao", "com.lawyus.study.**.dao"},
 		sqlSessionTemplateRef = "mysqlSessionTemplate")
 public class MysqlDataSourceConfig {
 	@Bean("mysqlDataSource")
