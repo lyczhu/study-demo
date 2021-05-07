@@ -1,30 +1,19 @@
-## mysql
-#spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver
-#spring.datasource.jdbc-url=jdbc:mysql://111.230.105.222:3306/file?serverTimezone=GMT%2b8&useSSL=false&rewriteBatchedStatements=true
-#spring.datasource.username=dev
-#spring.datasource.password=Dev5722.
-#spring.datasource.minIdle=10
-#spring.datasource.maxPoolSize=10
-#spring.datasource.maxLifetime=30000
-#spring.datasource.idleTimeout=20000
-#spring.datasource.leakDetectionThreshold=30000
-#
 ## mybatis-plus
 #mybatis-plus.global-config.db-config.id-type=auto
 
-
-# postgresql
-#spring.datasource.driverClassName=org.postgresql.Driver
-## serverTimezone=GMT%2b8&useSSL=false&rewriteBatchedStatements=true
-#spring.datasource.jdbc-url=jdbc:postgresql://localhost:54320/postgres
-#spring.datasource.username=postgres
-#spring.datasource.password=FlyPG123.
-#spring.datasource.platform=postgres
-#spring.datasource.minIdle=10
-#spring.datasource.maxPoolSize=10
-#spring.datasource.maxLifetime=30000
-#spring.datasource.idleTimeout=20000
-#spring.datasource.leakDetectionThreshold=30000
+spring:
+  datasource:
+    jdbc-url: jdbc:postgresql://localhost:54320/postgres
+    username: postgres
+    password: FlyPG123.
+    driver-class-name: org.postgresql.Driver
+#    serverTimezone: GMT%2b8&useSSL=false&rewriteBatchedStatements=true
+#    platform: postgres
+#    minIdle: 10
+#    maxPoolSize: 10
+#    maxLifetime: 30000
+#    idleTimeout: 20000
+#    leakDetectionThreshold: 30000
 
 # 内嵌数据库 h2
 #spring:
@@ -37,13 +26,13 @@
 #    job:
 #      enabled: false
 
-
-spring:
-  datasource:
-    jdbc-url: jdbc:mysql://111.230.105.222:3306/file?characterEncoding=utf-8
-    username: dev
-    password: Dev5722.
-    driver-class-name: com.mysql.jdbc.Driver
+# mysql
+#spring:
+#  datasource:
+#    jdbc-url: jdbc:mysql://111.230.105.222:3306/file?characterEncoding=utf-8
+#    username: dev
+#    password: Dev5722.
+#    driver-class-name: com.mysql.jdbc.Driver
 #    minIdle: 10
 #    maxPoolSize: 10
 #    maxLifetime: 30000

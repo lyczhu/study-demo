@@ -55,11 +55,11 @@ public class PostgresConn {
         private String password;
         private int portNumber = 0;*/
         dataSource.setServerName("localhost");
-        dataSource.setPortNumber(5432);
+        dataSource.setPortNumber(54320);
         dataSource.setDatabaseName("postgres");
         dataSource.setCurrentSchema("public");
         dataSource.setUser("postgres");
-        dataSource.setPassword("chengke123");
+        dataSource.setPassword("FlyPG123.");
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
     }
 }
