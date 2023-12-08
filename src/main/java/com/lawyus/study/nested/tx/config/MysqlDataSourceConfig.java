@@ -2,7 +2,8 @@ package com.lawyus.study.nested.tx.config;
 
 import com.baomidou.mybatisplus.core.MybatisConfiguration;
 import com.baomidou.mybatisplus.core.config.GlobalConfig;
-import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import org.apache.ibatis.logging.stdout.StdOutImpl;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -18,6 +19,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
+import java.util.Objects;
 
 /**
  * TODO : Describe please!
@@ -29,29 +31,34 @@ import javax.sql.DataSource;
 @MapperScan(basePackages = {"com.lawyus.study.nested.tx.dao", "com.lawyus.study.**.dao"},
 		sqlSessionTemplateRef = "mysqlSessionTemplate")
 public class MysqlDataSourceConfig {
-	@Bean("mysqlDataSource")
+	@Bean("dataSource")
 	@ConfigurationProperties(prefix = "spring.datasource")
 	public DataSource mysqlDataSource() {
 		return DataSourceBuilder.create().build();
 	}
 	@Bean("mysqlSessionFactory")
-	public SqlSessionFactory mysqlSessionFactory(@Qualifier("mysqlDataSource") DataSource dataSource) throws Exception {
+	public SqlSessionFactory mysqlSessionFactory(@Qualifier("dataSource") DataSource dataSource) throws Exception {
 		GlobalConfig globalConfig = new GlobalConfig();
-		MybatisConfiguration mybatisConfiguration = new MybatisConfiguration();
 		globalConfig.setBanner(false);
+
+		MybatisConfiguration mybatisConfiguration = new MybatisConfiguration();
 		MybatisSqlSessionFactoryBean bean = new MybatisSqlSessionFactoryBean();
 		mybatisConfiguration.setLogImpl(StdOutImpl.class);
-		mybatisConfiguration.addInterceptor(new PaginationInterceptor());
+
+		MybatisPlusInterceptor mpi = new MybatisPlusInterceptor();
+		mpi.addInnerInterceptor(new PaginationInnerInterceptor());
+
+		mybatisConfiguration.addInterceptor(mpi);
 		bean.setConfiguration(mybatisConfiguration);
 		bean.setGlobalConfig(globalConfig);
 		bean.setDataSource(dataSource);
 		bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mappers/*.xml"));
-		bean.getObject().getConfiguration().setMapUnderscoreToCamelCase(true);
+		Objects.requireNonNull(bean.getObject()).getConfiguration().setMapUnderscoreToCamelCase(true);
 		return bean.getObject();
 	}
-	@Bean("mysqlTransactionManager")
+	@Bean("transactionManager")
 	@Primary
-	public DataSourceTransactionManager mysqlTransactionManager(@Qualifier("mysqlDataSource") DataSource dataSource) {
+	public DataSourceTransactionManager mysqlTransactionManager(@Qualifier("dataSource") DataSource dataSource) {
 		return new DataSourceTransactionManager(dataSource);
 	}
 	@Bean("mysqlSessionTemplate")
