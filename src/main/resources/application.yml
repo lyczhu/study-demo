@@ -1,12 +1,12 @@
 ## mybatis-plus
 #mybatis-plus.global-config.db-config.id-type=auto
 
-spring:
-  datasource:
-    jdbc-url: jdbc:postgresql://localhost:54320/postgres
-    username: postgres
-    password: FlyPG123.
-    driver-class-name: org.postgresql.Driver
+#spring:
+#  datasource:
+#    jdbc-url: jdbc:postgresql://localhost:54320/postgres
+#    username: postgres
+#    password: FlyPG123.
+#    driver-class-name: org.postgresql.Driver
 #    serverTimezone: GMT%2b8&useSSL=false&rewriteBatchedStatements=true
 #    platform: postgres
 #    minIdle: 10
@@ -16,12 +16,12 @@ spring:
 #    leakDetectionThreshold: 30000
 
 # 内嵌数据库 h2
-#spring:
-#  datasource:
-#    jdbc-url: jdbc:h2:file:~/.h2/h2
-#    username:
-#    password:
-#    driver-class-name: org.h2.Driver
+spring:
+  datasource:
+    jdbc-url: jdbc:h2:file:~/.h2/h2
+    username:
+    password:
+    driver-class-name: org.h2.Driver
 #  batch:
 #    job:
 #      enabled: false
