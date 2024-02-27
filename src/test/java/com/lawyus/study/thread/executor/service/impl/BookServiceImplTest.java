@@ -2,21 +2,15 @@ package com.lawyus.study.thread.executor.service.impl;
 
 import com.lawyus.study.thread.executor.entity.Book;
 import com.lawyus.study.thread.executor.service.BookService;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.RandomUtils;
-import org.apache.kafka.common.metrics.stats.Count;
 import org.junit.Test;
-import org.junit.platform.commons.util.StringUtils;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.annotation.Resource;
-
 import java.util.concurrent.*;
-
-import static org.junit.Assert.*;
 
 /**
  * @author lyc
