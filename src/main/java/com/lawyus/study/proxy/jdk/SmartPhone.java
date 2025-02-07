@@ -11,4 +11,8 @@ public class SmartPhone implements Phone {
 	public void call() {
 		System.out.println("make a telephone call by smart phone");
 	}
+
+	public void message() {
+		System.out.println("smart phone message");
+	}
 }

@@ -7,7 +7,7 @@ package com.lawyus.study;
  * @author: lyc
  * @date: 2023/12/16
  */
-public class Test {
+public class InstanceValue {
     public static void main(String[] args) {
         ParentClass parentClass = new SubClass();
         SubClass subClass = new SubClass();
@@ -17,6 +17,7 @@ public class Test {
 
 class ParentClass {
     public int i = 10;
+    private int value = 5;
 }
 
 class SubClass extends ParentClass {
