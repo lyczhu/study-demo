@@ -2,24 +2,26 @@ package com.lawyus.study.concurrent.rotateprint;
 
 /**
  * 两个线程轮流打印数据
- * (原始版)
+ * 改进版
  */
 public class RotatePrinter {
     private boolean printNumber = true;
 
     public synchronized void printNumbers() {
-        for (int i = 0; i < 52;) {
+        for (int i = 1; i <= 52; i++) {
             while (!printNumber) {
                 try {
                     wait();
                 } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                    Thread.currentThread().interrupt();
+                    return;
                 }
             }
-            System.out.println(Thread.currentThread().getName()  + " " +  ++i);
-            System.out.println(Thread.currentThread().getName()  + " " +  ++i);
-            printNumber = !printNumber;
-            notifyAll();
+            System.out.println(Thread.currentThread().getName() + " " + i);
+            if (i % 2 == 0) {
+                printNumber = false;
+                notifyAll();
+            }
         }
     }
 
@@ -29,11 +31,12 @@ public class RotatePrinter {
                 try {
                     wait();
                 } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                    Thread.currentThread().interrupt();
+                    return;
                 }
             }
-            System.out.println(Thread.currentThread().getName() + " " + ((char) (65 + i)));
-            printNumber = !printNumber;
+            System.out.println(Thread.currentThread().getName() + " " + (char)('A' + i));
+            printNumber = true;
             notifyAll();
         }
     }
@@ -48,7 +51,7 @@ public class RotatePrinter {
         lThread.start();
     }
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         start();
     }
 }

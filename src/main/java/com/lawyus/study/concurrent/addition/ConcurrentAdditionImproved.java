@@ -30,7 +30,7 @@ public class ConcurrentAdditionImproved {
     }
 
     private void countByCountDownLatch() throws InterruptedException {
-        int threadCount = 10; // 修正为10个线程，符合题目要求
+        int threadCount = 10;
         CountDownLatch cdl = new CountDownLatch(threadCount);
         int[] arr = new int[threadCount];
 

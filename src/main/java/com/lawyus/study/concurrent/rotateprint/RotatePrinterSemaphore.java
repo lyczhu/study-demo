@@ -7,7 +7,7 @@ import java.util.concurrent.Semaphore;
  * 信号量实现版
  */
 public class RotatePrinterSemaphore {
-    private final Semaphore numberSemaphore = new Semaphore(1);
+    private final Semaphore numberSemaphore = new Semaphore(2);
     private final Semaphore letterSemaphore = new Semaphore(0);
 
     public void printNumbers() {
@@ -29,6 +29,7 @@ public class RotatePrinterSemaphore {
             for (int i = 0; i < 26; i++) {
                 letterSemaphore.acquire();
                 System.out.println(Thread.currentThread().getName() + " " + (char)('A' + i));
+                numberSemaphore.release();
                 numberSemaphore.release();
             }
         } catch (InterruptedException e) {
