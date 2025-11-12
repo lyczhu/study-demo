@@ -1,5 +1,6 @@
 package com.lawyus.study.listener;
 
+import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
 
 /**
@@ -9,15 +10,13 @@ import org.springframework.context.ApplicationEvent;
  * @author: lyc
  * @date: 2023/12/19
  */
+@Getter
 public class LoginEvent extends ApplicationEvent {
-    private Login login;
+    private final Login login;
 
     public LoginEvent(Object source, Login login) {
         super(source);
         this.login = login;
     }
 
-    public Login getLogin() {
-        return this.login;
-    }
 }

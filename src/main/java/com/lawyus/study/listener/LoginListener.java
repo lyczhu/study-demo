@@ -13,6 +13,6 @@ public class LoginListener implements ApplicationListener<LoginEvent> {
     @Override
     public void onApplicationEvent(LoginEvent event) {
 
-        System.out.printf("监听到事件：{}", event.getLogin());
+        System.out.printf("监听到事件：%s", event.getLogin());
     }
 }

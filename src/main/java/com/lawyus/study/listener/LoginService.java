@@ -2,6 +2,7 @@ package com.lawyus.study.listener;
 
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
+import org.springframework.lang.NonNullApi;
 
 /**
  * Spring 自定义事件监听 的事件类
@@ -18,7 +19,7 @@ public class LoginService implements ApplicationEventPublisherAware {
         this.applicationEventPublisher = applicationEventPublisher;
     }
 
-    public void publish(Login order) {
-        this.applicationEventPublisher.publishEvent(new LoginEvent("create login event", new Login()));
+    public void publish(Login login) {
+        this.applicationEventPublisher.publishEvent(new LoginEvent("create login event", login));
     }
 }

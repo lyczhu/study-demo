@@ -24,8 +24,6 @@ public class LoggingAspect {
     public void logBefore(JoinPoint joinPoint) {
         // 日志记录逻辑
         System.out.println("logBefore");
-        System.out.println(joinPoint.toShortString());
-        System.out.println(joinPoint.toLongString());
     }
 
     // 后置通知：在方法执行后执行
@@ -38,9 +36,13 @@ public class LoggingAspect {
     // 环绕通知：可以包围方法执行的前后
     @Around("logPointcut()")
     public Object logAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-        // TODO 方法执行前的逻辑
+        // 方法执行前的逻辑
+        IO.println("logAround:before");
+
         Object result = proceedingJoinPoint.proceed();
-        // TODO 方法执行后的逻辑
+
+        // 方法执行后的逻辑
+        IO.println("logAround:after");
         return result;
     }
 }

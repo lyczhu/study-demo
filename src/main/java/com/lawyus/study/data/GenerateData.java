@@ -18,38 +18,41 @@ public class GenerateData {
     // rewriteBatchedStatements=true 需要加上这个参数才会批量执行SQL语句
     private static final String DB_URL = "jdbc:mysql://localhost:3306/develop?rewriteBatchedStatements=true";
     private static final String USER = "root";
-    private static final String PASS = "develop";
+    private static final String PASSWORD = "develop";
 
     // 创建表的 SQL 语句
-    private static final String CREATE_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS test_data_jdbc ("
-            + "id INT AUTO_INCREMENT PRIMARY KEY,"
-            + "name VARCHAR(50),"
-            + "age TINYINT,"
-            + "email VARCHAR(255),"
-            + "address VARCHAR(255),"
-            + "phone_number VARCHAR(15),"
-            + "job VARCHAR(100),"
-            + "company VARCHAR(100),"
-            + "salary DECIMAL(10, 2),"
-            + "is_employed TINYINT(1),"
-            + "birth_date DATE,"
-            + "registration_date DATETIME,"
-            + "height FLOAT,"
-            + "weight FLOAT,"
-            + "website_url VARCHAR(255),"
-            + "created_at TIMESTAMP)";
+    private static final String CREATE_TABLE_QUERY = """
+            CREATE TABLE IF NOT EXISTS employees (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                name VARCHAR(50),
+                age TINYINT,
+                email VARCHAR(255),
+                address VARCHAR(255),
+                phone_number VARCHAR(15),
+                job VARCHAR(100),
+                company VARCHAR(100),
+                salary DECIMAL(10, 2),
+                is_employed TINYINT(1),
+                birth_date DATE,
+                registration_date DATETIME,
+                height FLOAT,
+                weight FLOAT,
+                website_url VARCHAR(255),
+                created_at TIMESTAMP
+            )""";
 
     // 插入数据的 SQL 语句
-    private static final String INSERT_QUERY = "INSERT INTO test_data_jdbc (name, age, email, address, phone_number, job, company, salary, is_employed,"
-            + " birth_date, registration_date, height, weight, website_url, created_at)"
-            + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String INSERT_QUERY = """
+            INSERT INTO employees (name, age, email, address, phone_number, job, company, salary,
+            is_employed,birth_date, registration_date, height, weight, website_url, created_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""";
 
     // 数据源
     private static DataSource dataSource;
     // 批次大小
     private static final int BATCH_SIZE = 1000;
     // 总记录数
-    private static final int TOTAL_RECORDS = 10000000;
+    private static final int TOTAL_RECORDS = 1000000;
     // 线程池大小
     private static final int THREADS = 10;
     // 最小连接数
@@ -63,7 +66,7 @@ public class GenerateData {
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl(DB_URL);
         config.setUsername(USER);
-        config.setPassword(PASS);
+        config.setPassword(PASSWORD);
         config.setMinimumIdle(MIN_CONNECTIONS);
         config.setMaximumPoolSize(MAX_CONNECTIONS);
         log.info("HikariConfig: {}", config);
