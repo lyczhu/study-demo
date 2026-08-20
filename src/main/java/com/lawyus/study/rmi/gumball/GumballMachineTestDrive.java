@@ -6,7 +6,7 @@ import java.rmi.RemoteException;
 
 public class GumballMachineTestDrive {
     public static void main(String[] args) {
-        GumballMachineRemote gumballMachineRemote = null;
+        GumballMachineRemote gumballMachineRemote;
         int count;
         if (args.length < 2) {
             System.out.println("GumballMachine <name> <inventory>");
